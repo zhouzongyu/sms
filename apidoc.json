@@ -1,0 +1,23 @@
+{
+  "name": "短信服务接口文档",
+  "version": "1.0.0",
+  "description": "本文档开放短信服务相关接口说明",
+  "title": "短信服务接口文档",
+  "url": "http://xxx.xxx.xxx.xxx:xxx",
+  "sampleUrl": "http://192.168.39.128:8311",
+  "order": [
+    
+  ],
+  "header": {
+    "title": "文档说明（必读）",
+    "filename": "apidoc/header.md"
+  },
+  "footer": {
+    "title": "附录",
+    "filename": "apidoc/footer.md"
+  },
+  "template": {
+    "withCompare": true,
+    "withGenerator": true
+  }
+}

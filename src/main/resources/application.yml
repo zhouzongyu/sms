@@ -1,0 +1,72 @@
+server:
+  port: 8311
+  servlet:
+    context-path: /sms
+logging:
+  file: ./logs/sms.log
+spring:
+  devtools:
+    restart:
+      #某些资源的更新不用触发重启
+      exclude: /static/**,/templates/**
+      #是否启用
+      enabled: false
+  jackson:
+    #格式化返回json中日期的格式
+    date-format: yyyy-MM-dd HH:mm:ss
+    #北京时区，默认为GMT,会少8个小时
+    time-zone:  GMT+8
+  thymeleaf:
+    cache: false
+    # 默认html5对格式非常严格，LEGACYHTML5配合nekohtml可解决这个问题
+    mode: LEGACYHTML5
+  application:
+    name: sms-service
+     #一旦监控中心注册到eureka,其他服务也注册到eureka,那么监控中心会从eureka自动发现服务，因此就不用进行监控中心url的配置，如果没有启用eureka,那么仍要进行url的指定
+  boot:
+    admin:
+      client:
+        enabled: true # 是否启用客户端
+        url:  # 注册到监控中心 http://localhost:8000
+
+#############################eureka配置########################################
+eureka:
+    client:
+        serviceUrl:
+            # 注册到注册中心
+            defaultZone: http://192.168.39.128:8314/eureka/
+        enabled: true #是否会去注册，如果没有注册中心这里设置为false即可
+
+############################actuator配置#######################################
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*" #“*”号代表启用所有的监控端点，可以单独启用，例如，health，info，metrics等
+  server:
+    servlet:
+      context-path:
+    ssl:
+      enabled: false
+    port: 1${server.port} # actuator访问的端口
+  endpoint:
+    health:
+      show-details: always
+
+###############短信猫信息设置，如果需要自定义短信内容，请使用短信猫##############
+modem:
+  enabled: true #是否开启短信猫服务
+  com-port: COM1 #串口名称，一般为大写COM+数字，如COM1
+  baud-rate: 115200 #串口波特率,一般为115200
+  manufacturer: wavecom #开发商，一般为huawei和wavecom,可通过工具检测出来
+  model: #型号,不知道可为空
+
+###############阿里云短信信息设置,阿里云短信需要有模板，无法发送自定义短信内容，一般是发送短信验证码################
+aliyun:
+  enabled: true #是否开启阿里云短信服务
+  access-key-id:  #访问key，从阿里云控制台获取
+  access-key-secret:  #访问密钥，从阿里云控制台获取
+  read-timeout: 10000
+  connect-timeout: 10000
+  sign-name: 物联智汇系统 #短信签名，从阿里云控制台获取
+
