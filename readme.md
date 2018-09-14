@@ -11,6 +11,7 @@
 * 如果你使用短信猫来发送短信，那么本工程免去了大部分的开发工作，直接配置好短信猫的信息即可使用
 * 如果你使用阿里云的短信，那么只要配置好密钥模板等相关信息即可使用
 * 本工程提供友好的在线接口访问（使用apidoc）
+* [短信猫二次开发(java版)](https://blog.csdn.net/huweijian5/article/details/82658865)
 
 # 注意
 * 本工程暂时只支持windows环境运行，linux未测试
@@ -24,7 +25,7 @@
 # 访问
 * 服务启动后访问以下地址进入首页，ip和端口根据实际情况修改
 * http://localhost:port/sms/
-* [接口截图](./screenshot/menu.saveimg.savepath20180914110153.jpg)
+* ![接口截图](./screenshot/menu.saveimg.savepath20180914110153.jpg)
 
 # apidoc:
 * step1:参照官网安装好node.js环境：http://apidocjs.com/
